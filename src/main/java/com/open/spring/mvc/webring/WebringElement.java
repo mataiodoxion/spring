@@ -1,9 +1,12 @@
 package com.open.spring.mvc.webring;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import org.apache.commons.lang3.builder.ToStringExclude;
+
+import jakarta.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -23,4 +26,9 @@ public class WebringElement {
 
     @Column(nullable = false)
     private Integer position;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn( name = "webring_id", nullable = false, foreignKey = @ForeignKey(name = "fk_webring_element_webring"))
+    @ToStringExclude
+    private Webring webring;
 }

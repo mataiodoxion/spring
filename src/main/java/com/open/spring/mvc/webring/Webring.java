@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +20,7 @@ public class Webring {
     private Long id;
 
     @OneToMany(
+        mappedBy = "webring",
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
